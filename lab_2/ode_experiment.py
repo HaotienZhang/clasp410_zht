@@ -408,7 +408,6 @@ def run_experiment_3():
     plt.show()
 
 def main():
-
     # add arguments, to decide which experiment to run
     parser = argparse.ArgumentParser()
 
