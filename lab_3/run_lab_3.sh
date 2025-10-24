@@ -1,0 +1,1 @@
+python heat_solver.py --exp1
