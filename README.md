@@ -33,3 +33,11 @@ Lab2:
 `sh run_ode.sh --validation --exp1 --exp2 --exp3`
 * You can choose to run any combination of the experiments by specifying only the flags you need. 
 `sh run_ode.sh --exp2`
+
+Lab3:
+* Before running the script, navigate to the lab's root directory in your command line interface:
+`cd lab_3`
+* To perform the initial validation and run all two experiments in a single command, use:
+`python heat_solver.py --validation --exp1 --exp2`
+* You can also choose to run any combination of the experiments by specifying only the flags you need. 
+`python heat_solver.py --exp1`
