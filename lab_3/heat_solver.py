@@ -1,7 +1,17 @@
+#!/usr/bin/env python3
+
+'''
+A package/script combination for solving the heat equation in 1D.
+Several applications are included: a 1D test problem and an array of
+problems pertaining to the permafrost.
+
+Use the command line options to set which experiment(s) to run.
+'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import argparse
+from argparse import ArgumentParser, RawDescriptionHelpFormatter
 
 plt.style.use('fivethirtyeight')
 
@@ -355,11 +365,18 @@ def run_exp_2():
 
 # Run validation
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+    # Start by setting up and parsing arguments.
+    parser = ArgumentParser()
+    # Use the docstring as the main description:
+    parser = ArgumentParser(description=__doc__,
+                            formatter_class=RawDescriptionHelpFormatter)
 
-    parser.add_argument("--validation", action='store_true')
-    parser.add_argument("--exp1", action='store_true')
-    parser.add_argument("--exp2", action='store_true')
+    parser.add_argument("-v", "--validation", action='store_true',
+                        help="Run the validation problem and show plots.")
+    parser.add_argument("-e1", "--exp1", action='store_true',
+                        help="Run experiment 1 for permafrost applications.")
+    parser.add_argument("-e2", "--exp2", action='store_true',
+                        help="Run experiment 1 for permafrost applications.")
     args = parser.parse_args()
 
     if args.validation:
