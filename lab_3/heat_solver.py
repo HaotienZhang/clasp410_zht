@@ -101,9 +101,13 @@ def solve_heat_equation(x_min, x_max, t_min, t_max, dx, dt, c_squared,
 
 
 # Example: Validate with the test problem from the lab
-def validate_solver():
+def validate_solver(tol=1e-5):
     """
     Validate the solver with the example problem from the lab manual.
+
+    All values are checked using Numpy's `isclose` function. Additionally,
+    the maximum absolute error is tested against tolerance `tol` (defaults
+    to 1E-5).
     """
     print("VALIDATING SOLVER WITH TEST PROBLEM\n")
 
@@ -158,11 +162,18 @@ def validate_solver():
                     f"Value mismatch at i={i}, j={j}: {heat[i,j]} != {sol10p3[i,j]}"
         print()
 
+    diff = np.abs(heat - sol10p3)
+    if diff.max() > tol:
+        print(f'WARNING: Max error ({diff.max()}) exceeds tolerance ({tol})')
+    else:
+        print('Solver test passes.')
 
     return time, x, heat
 
+
 t_kanger = np.array([-19.7, -21.0, -17., -8.4, 2.3, 8.4,
                      10.7, 8.5, 3.1, -6.0, -12.0, -16.9])
+
 
 def temp_kanger(t):
     '''
